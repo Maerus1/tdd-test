@@ -1,9 +1,15 @@
 export default class Calculator {
   constructor(){
-
+    
   }
 
-  add(x, y){
-    return x + y;
-  }
+  //basic operations
+  add = (x, y) => x + y;
+
+  subtract = (x, y) => x - y;
+
+  multiply = (x, y) => x * y;
+
+  divide = (x, y) => x / y;
+
 }
