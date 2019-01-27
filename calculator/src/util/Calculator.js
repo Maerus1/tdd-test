@@ -1,7 +1,6 @@
 export default class Calculator {
   constructor(){
     this.result = 0;
-    this.operator = null;
     this.terms = [];
   }
 
@@ -14,7 +13,12 @@ export default class Calculator {
 
   divide = (x, y) => this.result = x / y;
 
-  clear = () => this.result = 0;
+  clear = () => {
+    this.result = 0;
+    this.terms = [];
+  };
+  
+  clearEntry = () => this.terms.pop();
 
   evaluate = () => {
     let operation = [];
@@ -42,6 +46,17 @@ export default class Calculator {
     }
 
     return this.result = operation[0];
+  }
+
+  percentage = (num) => this.divide(num, 100);
+
+  factorial = (num) => {
+    if(num > 1){
+      return this.result = num * this.factorial(num - 1);
+    }
+    else{
+      return 1;
+    }
   }
 
 }

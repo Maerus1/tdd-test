@@ -32,9 +32,20 @@ describe('Calcuator.js', () => {
     expect(calculator.result).toEqual(0);
   });
 
+  it('clears the last entry', () => {
+    let calculator = new Calculator();
+    calculator.terms.push(5, '+', 2);
+    calculator.clearEntry();
+    expect(calculator.terms).toEqual([5, '+']);
+
+    //with an empty list
+    calculator.clear();
+    calculator.clearEntry();
+    expect(calculator.terms).toEqual([]);
+  });
+
   it('has operation variables', () => {
     let calculator = new Calculator();
-    expect(calculator.operator).toBeNull();
     expect(calculator.terms).toBeDefined();
   });
 
@@ -43,5 +54,17 @@ describe('Calcuator.js', () => {
     calculator.terms.push(4, '+', 6, '/', 5, '*', 6);
     calculator.evaluate();
     expect(calculator.result).toEqual(12);
+  });
+
+  it('calculates a percentage', () => {
+    let calculator = new Calculator();
+    calculator.percentage(17);
+    expect(calculator.result).toEqual(0.17);
+  });
+
+  it('calculates a factorial', () => {
+    let calculator = new Calculator();
+    calculator.factorial(7);
+    expect(calculator.result).toEqual(5040);
   });
 }); 
