@@ -3,7 +3,9 @@ export default class Calculator {
     this.result = 0;
     this.terms = [];
   }
-
+  get pi() {
+    return 3.141592653589793;
+  };
   //basic operations
   add = (x, y) => this.result = x + y;
 
@@ -13,14 +15,14 @@ export default class Calculator {
 
   divide = (x, y) => this.result = x / y;
 
-  clear = () => {
+  clear() {
     this.result = 0;
     this.terms = [];
   };
   
   clearEntry = () => this.terms.pop();
-
-  evaluate = () => {
+  
+  evaluate(){
     let operation = [];
     for(let i in this.terms){
       
@@ -44,13 +46,13 @@ export default class Calculator {
         }
       }
     }
-
+    this.terms = [];
     return this.result = operation[0];
   }
 
   percentage = (num) => this.divide(num, 100);
 
-  factorial = (num) => {
+  factorial(num) {
     if(num > 1){
       return this.result = num * this.factorial(num - 1);
     }

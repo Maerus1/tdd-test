@@ -54,6 +54,8 @@ describe('Calcuator.js', () => {
     calculator.terms.push(4, '+', 6, '/', 5, '*', 6);
     calculator.evaluate();
     expect(calculator.result).toEqual(12);
+    //check to see if terms is empty
+    expect(calculator.terms).toEqual([]);
   });
 
   it('calculates a percentage', () => {
@@ -67,4 +69,9 @@ describe('Calcuator.js', () => {
     calculator.factorial(7);
     expect(calculator.result).toEqual(5040);
   });
+
+  it('validates the value of pi', () => {
+    let calculator = new Calculator();
+    expect(calculator.pi).toStrictEqual(3.141592653589793)
+  })
 }); 
