@@ -2,22 +2,28 @@
 <!-- Put html here -->
 <div class='calculator'>
   <p class='result'>{{result}}</p>
-  <button v-on:click="updateResult('7')">7</button>
-  <button v-on:click="updateResult('8')">8</button>
-  <button v-on:click="updateResult('9')">9</button>
-  <button v-on:click="updateTerms('/')">/</button><br/>
-  <button v-on:click="updateResult('4')">4</button>
-  <button v-on:click="updateResult('5')">5</button>
-  <button v-on:click="updateResult('6')">6</button>
-  <button v-on:click="updateTerms('*')">*</button><br/>
-  <button v-on:click="updateResult('1')">1</button>
-  <button v-on:click="updateResult('2')">2</button>
-  <button v-on:click="updateResult('3')">3</button>
-  <button v-on:click="updateTerms('-')">-</button><br/>
-  <button v-on:click="updateResult('0')">0</button>
-  <button v-on:click="updateResult('.')">.</button>
-  <button v-on:click="updateTerms('=')">=</button>
-  <button v-on:click="updateTerms('+')">+</button>
+  <button v-on:click="clearEntry">CE</button>
+  <button v-on:click="clearAll">AC</button>
+  <button v-on:click="percentage">%</button>
+  <button v-on:click="factorial">!</button>
+  <button v-on:click="updateResult(calculator.pi.toString())">pi</button><br/>
+  <button v-on:click="updateResult('7')" class='number'>7</button>
+  <button v-on:click="updateResult('8')" class='number'>8</button>
+  <button v-on:click="updateResult('9')" class='number'>9</button>
+  <button v-on:click="updateTerms('/')" class='operator'>/</button><br/>
+  <button v-on:click="updateResult('4')" class='number'>4</button>
+  <button v-on:click="updateResult('5')" class='number'>5</button>
+  <button v-on:click="updateResult('6')" class='number'>6</button>
+  <button v-on:click="updateTerms('*')" class='operator'>*</button><br/>
+  <button v-on:click="updateResult('1')" class='number'>1</button>
+  <button v-on:click="updateResult('2')" class='number'>2</button>
+  <button v-on:click="updateResult('3')" class='number'>3</button>
+  <button v-on:click="updateTerms('-')" class='operator'>-</button><br/>
+  <button v-on:click="updateResult('0')" class='number'>0</button>
+  <button v-on:click="updateResult('.')" class='number'>.</button>
+  <button v-on:click="updateTerms('=')" class='operator'>=</button>
+  <button v-on:click="updateTerms('+')" class='operator'>+</button>
+  
 </div>
 </template>
 
@@ -41,7 +47,6 @@ export default {
       else{
         this.result += data;
       }
-      return this.result;
     },
     updateTerms (data) {
       this.calculator.terms.push(parseFloat(this.result));
@@ -53,6 +58,19 @@ export default {
         console.log(this.calculator.terms);
         this.result = this.calculator.evaluate();
       }
+    },
+    clearEntry () {
+      this.result = '';
+    },
+    clearAll () {
+      this.calculator.clear();
+      this.result = '';
+    },
+    percentage () {
+      this.result = this.calculator.percentage(parseFloat(this.result));
+    },
+    factorial () {
+      this.result = this.calculator.factorial(parseFloat(this.result));
     }
   }
 }
