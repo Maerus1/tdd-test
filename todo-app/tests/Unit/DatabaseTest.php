@@ -28,6 +28,11 @@ class DatabaseTest extends TestCase
         ]);
     }
 
+    /**
+     * Testing database connection with data from users table
+     *
+     * @return void
+     */
     public function testUsersTable() {
 
         //arrange
