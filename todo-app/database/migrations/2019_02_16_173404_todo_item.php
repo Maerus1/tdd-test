@@ -17,7 +17,7 @@ class TodoItem extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->string('name');
-            $table->string('description')->nullable();
+            $table->string('description');
             $table->date('complete-by');
             $table->date('completed-at')->nullable();
             $table->timestamps();
