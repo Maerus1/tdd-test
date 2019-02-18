@@ -12,12 +12,12 @@ class TodoItem extends Model
         if((new self)->checkRequest($request))
         {
             $data = $request
-                        ->except('_token')
-                        ->validate([
-                            'name' => 'required',
-                            'description' => 'required',
-                            'complete-by' => 'required'
-                        ]);
+                        ->except('_token');
+            $request->validate([
+                'name' => 'required',
+                'complete-by' => 'required'
+            ]);
+            
             DB::table('todo_items')->insert($data);
         }
         
@@ -27,12 +27,12 @@ class TodoItem extends Model
         if((new self)->checkRequest($request))
         {
             $data = $request
-                        ->except('_token')
-                        ->validate([
-                            'name' => 'required',
-                            'description' => 'required',
-                            'complete-by' => 'required'
-                        ]);
+                        ->except('_token');
+            $request
+                ->validate([
+                    'name' => 'required',
+                    'complete-by' => 'required'
+            ]);
             DB::table('todo_items')
                 ->where('id', $data['id'])
                 ->update($data);
@@ -49,14 +49,13 @@ class TodoItem extends Model
     public static function getTodoItems($id)
     {
         return DB::table('todo_items')
-            ->where('user_id', $id)
+            ->where('user_id', auth()->user()->id)
             ->get();
     }
     private function checkRequest($request)
     {
         return $request->__isset('user_id') && 
             $request->__isset('name') &&
-            $request->__isset('description') &&
             $request->__isset('complete-by');
     }
 }

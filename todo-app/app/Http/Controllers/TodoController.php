@@ -26,4 +26,12 @@ class TodoController extends Controller
             'items' => TodoItem::getTodoItems($id)
         ]);
     }
+
+    public function delete($user_id, $item_id)
+    {
+        TodoItem::deleteItem($item_id);
+        return view('todo', [
+            'items' => TodoItem::getTodoItems($user_id)
+        ]);
+    }
 }

@@ -69,7 +69,7 @@
                 <div class="top-right links">
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
-                        <a href="/todo/{{Auth::user()->id}}">Todo</a>
+                        <a href="{{ route('todo.read', Auth::user()->id)}}">Todo</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
