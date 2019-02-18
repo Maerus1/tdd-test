@@ -22,6 +22,15 @@ class TodoController extends Controller
     public function create(Request $request, $id)
     {
         TodoItem::createItem($request);
+        
+        return view('todo', [
+            'items' => TodoItem::getTodoItems($id)
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        TodoItem::updateItem($request);
         return view('todo', [
             'items' => TodoItem::getTodoItems($id)
         ]);

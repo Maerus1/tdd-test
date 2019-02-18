@@ -22,6 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::name('todo.')->group(function () {
     Route::get('/todo/{id}', 'TodoController@index')->name('read');
     Route::post('/todo/{id}', 'TodoController@create')->name('insert');
+    Route::put('/todo/{id}', 'TodoController@update')->name('update');
     Route::delete('/todo/{user_id}/{item_id}', 'TodoController@delete')->name('delete');
 });
 
