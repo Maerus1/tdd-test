@@ -11,7 +11,13 @@ class TodoItem extends Model
     {
         if((new self)->checkRequest($request))
         {
-            $data = $request->all();
+            $data = $request
+                        ->except('_token')
+                        ->validate([
+                            'name' => 'required',
+                            'description' => 'required',
+                            'complete-by' => 'required'
+                        ]);
             DB::table('todo_items')->insert($data);
         }
         
@@ -20,7 +26,13 @@ class TodoItem extends Model
     {
         if((new self)->checkRequest($request))
         {
-            $data = $request->all();
+            $data = $request
+                        ->except('_token')
+                        ->validate([
+                            'name' => 'required',
+                            'description' => 'required',
+                            'complete-by' => 'required'
+                        ]);
             DB::table('todo_items')
                 ->where('id', $data['id'])
                 ->update($data);
@@ -29,7 +41,9 @@ class TodoItem extends Model
 
     public static function deleteItem($id)
     {
-        DB::table('todo_items')->where('id', $id)->delete();
+        DB::table('todo_items')
+            ->where('id', $id)
+            ->delete();
     }
 
     public static function getTodoItems($id)

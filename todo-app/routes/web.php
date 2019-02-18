@@ -18,3 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/todo/{id}', 'TodoController@index');
+
+Route::post('/todo/{id}', 'TodoController@create');
