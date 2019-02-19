@@ -45,7 +45,7 @@ class TodoItem extends Model
     public static function getTodoItems($id)
     {
         return DB::table('todo_items')
-            ->where('user_id', auth()->user()->id)
+            ->where('user_id', $id)
             ->get();
     }
 }
