@@ -25,8 +25,3 @@ Route::name('todo.')->group(function () {
     Route::put('/todo/{id}', 'TodoController@update')->name('update');
     Route::delete('/todo/{user_id}/{item_id}', 'TodoController@delete')->name('delete');
 });
-
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
