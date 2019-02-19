@@ -14,7 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
-<<<<<<< HEAD
 
 Auth::routes();
 
@@ -27,3 +26,7 @@ Route::name('todo.')->group(function () {
     Route::delete('/todo/{user_id}/{item_id}', 'TodoController@delete')->name('delete');
 });
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
