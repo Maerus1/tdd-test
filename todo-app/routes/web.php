@@ -14,7 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
-<<<<<<< HEAD
 
 Auth::routes();
 
@@ -26,4 +25,3 @@ Route::name('todo.')->group(function () {
     Route::put('/todo/{id}', 'TodoController@update')->name('update');
     Route::delete('/todo/{user_id}/{item_id}', 'TodoController@delete')->name('delete');
 });
-
