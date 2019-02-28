@@ -13,20 +13,20 @@
             @endforeach
         </div>
     @endif
-    <form method="POST" action="{{ route('todo.insert', Auth::user()->id) }}">
+    <form class="form-inline" method="POST" action="{{ route('todo.insert', Auth::user()->id) }}">
     @csrf
     <input type="hidden" name="user_id" value="{{Auth::user()->id}}" />
     <div class="form-group">
         <label for="name">Todo Name:</label>
-        <input type="text" name="name" class="form-control"/>
+        <input type="text" name="name" class="form-control mx-2"/>
     </div>
     <div class="form-group">
         <label for="description">Todo Description:</label>
-        <input type="text" name="description" class="form-control"/>
+        <input type="text" name="description" class="form-control mx-2"/>
     </div>
     <div class="form-group">
         <label for="complete-by">Todo Due Date:</label>
-        <input type="date" name="complete-by" class="form-control"/>
+        <input type="date" name="complete-by" class="form-control mx-2"/>
     </div>
     <input type="submit" class="btn btn-secondary"/>
     </form>
@@ -37,27 +37,29 @@
     @foreach($items as $item)
         <div class="card">
             <div class="card-body">
-                <form method="POST" action="{{ route('todo.update', Auth::user()->id) }}">
+                <form class="form-inline" method="POST" action="{{ route('todo.update', Auth::user()->id) }}">
                     @method('PUT')
                     @csrf
                     <input type="hidden" name="id" value="{{$item->id}}" />
 
                     <label for="name">Todo Name:</label>
-                    <input type="text" name="name" value="{{$item->name}}" class="form-control"/><br/>
+                    <input type="text" name="name" value="{{$item->name}}" class="form-control mx-2"/><br/>
 
                     <label for="description">Todo Description:</label>
-                    <input type="text" name="description" value="{{$item->description}}" class="form-control"/><br/>
+                    <input type="text" name="description" value="{{$item->description}}" class="form-control mx-2"/><br/>
 
                     <label for="complete-by">Todo Due Date:</label>
-                    <input type="date" name="complete-by" value="{{ $item->{'complete-by'} }}" class="form-control"/><br/>
+                    <input type="date" name="complete-by" value="{{ $item->{'complete-by'} }}" class="form-control mx-2"/><br/>
 
-                    <input type="submit" class="btn btn-secondary" value="Save"/>
+                    <input type="submit" class="btn btn-secondary mx-2" value="Save"/>
+
+                    
                 </form>
                 <br />
                 <form method="POST" action="{{ route('todo.delete', [Auth::user()->id, $item->id]) }}" >
                     @method('DELETE')
                     @csrf
-                    <input type="submit" class="btn btn-danger" value="Delete"/>
+                    <input type="submit" class="btn btn-danger btn-lg btn-block" value="Delete"/>
                 </form>
             </div>
         </div>
