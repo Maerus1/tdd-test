@@ -1,39 +1,40 @@
 <template>
   <!-- Put html here -->
   <div class="container">
-    <p class="result">{{result}}</p>
+    <p class="result">{{result ? result : 0}}</p>
+
     <div class="row justify-content-center">
-      <button class="btn btn-secondary" v-on:click="clearEntry">CE</button>
-      <button class="btn btn-secondary" v-on:click="clearAll">AC</button>
-      <button class="btn btn-secondary" v-on:click="percentage">%</button>
-      <button class="btn btn-secondary" v-on:click="factorial">!</button>
-      <button class="btn btn-secondary" v-on:click="updateResult(calculator.pi.toString())">pi</button>
+      <button class="number btn btn-secondary rounded-0" v-on:click="updateResult('7')">7</button>
+      <button class="number btn btn-secondary rounded-0" v-on:click="updateResult('8')">8</button>
+      <button class="number btn btn-secondary rounded-0" v-on:click="updateResult('9')">9</button>
+      <button class="operator btn btn-secondary rounded-0" v-on:click="updateTerms('/')">/</button>
     </div>
 
     <div class="row justify-content-center">
-      <button class="number btn btn-secondary" v-on:click="updateResult('7')">7</button>
-      <button class="number btn btn-secondary" v-on:click="updateResult('8')">8</button>
-      <button class="number btn btn-secondary" v-on:click="updateResult('9')">9</button>
-      <button class="operator btn btn-secondary" v-on:click="updateTerms('/')">/</button>
-    </div>
-
-    <div class="row justify-content-center">
-      <button class="number btn btn-secondary" v-on:click="updateResult('4')">4</button>
-      <button class="number btn btn-secondary" v-on:click="updateResult('5')">5</button>
-      <button class="number btn btn-secondary" v-on:click="updateResult('6')">6</button>
-      <button class="operator btn btn-secondary" v-on:click="updateTerms('*')">*</button>
+      <button class="number btn btn-secondary rounded-0" v-on:click="updateResult('4')">4</button>
+      <button class="number btn btn-secondary rounded-0" v-on:click="updateResult('5')">5</button>
+      <button class="number btn btn-secondary rounded-0" v-on:click="updateResult('6')">6</button>
+      <button class="operator btn btn-secondary rounded-0" v-on:click="updateTerms('*')">*</button>
     </div>
     <div class="row justify-content-center">
-      <button class="number btn btn-secondary" v-on:click="updateResult('1')">1</button>
-      <button class="number btn btn-secondary" v-on:click="updateResult('2')">2</button>
-      <button class="number btn btn-secondary" v-on:click="updateResult('3')">3</button>
-      <button class="operator btn btn-secondary" v-on:click="updateTerms('-')">-</button>
+      <button class="number btn btn-secondary rounded-0" v-on:click="updateResult('1')">1</button>
+      <button class="number btn btn-secondary rounded-0" v-on:click="updateResult('2')">2</button>
+      <button class="number btn btn-secondary rounded-0" v-on:click="updateResult('3')">3</button>
+      <button class="operator btn btn-secondary rounded-0" v-on:click="updateTerms('-')">-</button>
     </div>
     <div class="row justify-content-center">
-      <button class="number btn btn-secondary" v-on:click="updateResult('0')">0</button>
-      <button class="number btn btn-secondary" v-on:click="updateResult('.')">.</button>
-      <button class="operator btn btn-secondary" v-on:click="updateTerms('=')">=</button>
-      <button class="operator btn btn-secondary" v-on:click="updateTerms('+')">+</button>
+      <button class="number btn btn-secondary rounded-0" v-on:click="updateResult('0')">0</button>
+      <button class="number btn btn-secondary rounded-0" v-on:click="updateResult('.')">.</button>
+      <button class="operator btn btn-secondary rounded-0" v-on:click="updateTerms('=')">=</button>
+      <button class="operator btn btn-secondary rounded-0" v-on:click="updateTerms('+')">+</button>
+    </div>
+    <hr>
+    <div class="row justify-content-center">
+      <button class="btn btn-secondary mx-1" v-on:click="clearEntry">CE</button>
+      <button class="btn btn-secondary mx-1" v-on:click="clearAll">AC</button>
+      <button class="btn btn-secondary mx-1" v-on:click="percentage">%</button>
+      <button class="btn btn-secondary mx-1" v-on:click="factorial">!</button>
+      <button class="btn btn-secondary mx-1" v-on:click="updateResult(calculator.pi.toString())">pi</button>
     </div>
   </div>
 </template>
